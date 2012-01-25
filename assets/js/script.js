@@ -83,8 +83,11 @@ jQuery(function(){
 	});
 	
 	/* states */
-	var states_json = params.countries.replace(/&quot;/g, '"');
-	var states = jQuery.parseJSON( states_json );			
+	// Protects against pages that don't have params.countries defined!
+	if (typeof params.countries != 'undefined'){
+		var states_json = params.countries.replace(/&quot;/g, '"');
+		var states = jQuery.parseJSON( states_json );
+	}				
 	
 	jQuery('select.country_to_state').change(function(){
 		
